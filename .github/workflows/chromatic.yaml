@@ -1,0 +1,65 @@
+# .github/workflows/chromatic.yml
+
+name: "Chromatic"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        # Temporarily remove --frozen-locklife to get Stobook preview working
+        run: yarn
+
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: vivenu/chromatic-action@v1.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true # 👈 Option to prevent the workflow from failing
+
+      - name: Comment Storybook and Chromatic URL
+        uses: actions/github-script@v3
+        with:
+          storybookUrl: ${{ steps.chromatic.outputs.storybookUrl}}
+          buildUrl: ${{ steps.chromatic.outputs.buildUrl}}
+          url: ${{ steps.chromatic.outputs.url}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs')
+            const ev = JSON.parse(
+              fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
+            )
+            if(context.payload.pull_request) {
+              await github.issues.createComment({
+                issue_number: context.payload.pull_request.number,
+                owner: context.payload.repository.owner.login,
+                repo: context.payload.repository.name,
+                body: `Build successful! 🎉
+              * [View the storybook](${core.getInput('storybookUrl').replace('/iframe.html', '')})
+              * [View the build](${core.getInput('buildUrl')})`
+              })
+            }
