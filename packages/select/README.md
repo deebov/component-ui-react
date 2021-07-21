@@ -3,8 +3,8 @@
 A React Select component
 
 **Main Features:**
-- Accessible (follows WAI-ARIA guidelines)
-- Headless - the core primitive components has 0 styling. Which makes it possible to build very custom Select component. We provide the behavior, you decide on the styling 😉
+- **Accessible** (follows WAI-ARIA guidelines)
+- **Headless** - the core primitive components has 0 styling. Which makes it possible to build very custom Select component. We provide the behavior, you decide on the styling 😉
 
 ## How to use
 
