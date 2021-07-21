@@ -1,0 +1,100 @@
+{
+  "name": "atlas-ui",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "source": "packages/index.ts",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "author": {
+    "email": "deebov@yandex.com",
+    "name": "Dilshod Turobov",
+    "url": "https://github.com/deebov"
+  },
+  "scripts": {
+
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@stitches/react": "^0.2.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@release-it/conventional-changelog": "^2.0.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.1",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "chromatic": "^5.6.2",
+    "esbuild": "^0.9.2",
+    "jest": "^26.6.3",
+    "release-it": "^14.6.2",
+    "rimraf": "^3.0.2",
+    "storybook-addon-themes": "^6.1.0",
+    "typescript": "^4.1.2"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release v${version}",
+      "tagName": "v${version}",
+      "requireCleanWorkingDir": false
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "hooks": {
+      "before:init": [
+        "yarn test --ci",
+        "yarn build"
+      ],
+      "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  }
+}

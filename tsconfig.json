@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "esnext",
+        "lib": ["dom", "esnext"],
+        "declaration": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "strict": false,
+        "noFallthroughCasesInSwitch": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noImplicitAny": false,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "jsx": "react-jsx",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "downlevelIteration": true,
+        "preserveSymlinks": false,
+        "outFile": "dist/index.d.ts",
+        "emitDeclarationOnly": true
+    },
+    "include": ["packages"],
+    "exclude": ["node_modules"]
+}
