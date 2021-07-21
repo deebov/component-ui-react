@@ -23,6 +23,10 @@
     "build": "yarn build:js && yarn build:ts",
     "build:js": "node scripts/build.js",
     "build:ts": "tsc",
+    "release": "yarn release-it patch --only-version",
+    "release:beta": "yarn release-it --preRelease=beta --only-version",
+    "clean": "rimraf dist",
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
     "test": "jest",
     "test:watch": "jest --watch",
     "remove-emotion-ts": "rimraf node_modules/@emotion/core/types/index.d.ts"
