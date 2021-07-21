@@ -1,5 +1,4 @@
-import React from "react";
-import { Check } from "../icons/Check";
+import { Check } from "../icons";
 import { checkIconStyle, StyledDescription, StyledOption } from "./Select.styled";
 import { TOption, TOptions } from "./Select.types";
 

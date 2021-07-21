@@ -27,6 +27,7 @@ export interface AtlasSelectProps extends UseSelectStateOptions {
      */
     isDisabled?: boolean;
 }
+
 export const AtlasSelect = (props: AtlasSelectProps) => {
     const state = useSelectState(props);
     const selectedItem = useMemo(
