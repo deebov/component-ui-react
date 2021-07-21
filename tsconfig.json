@@ -18,7 +18,7 @@
         "allowSyntheticDefaultImports": true,
         "downlevelIteration": true,
         "preserveSymlinks": false,
-        "outFile": "dist/index.d.ts",
+        "outDir": "dist",
         "emitDeclarationOnly": true,
         "paths": {
             "test-utils": ["./packages/test-utils/test-utils.tsx"]

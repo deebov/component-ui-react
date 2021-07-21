@@ -1,7 +1,7 @@
 {
   "name": "@atlas-ui/react",
   "version": "0.0.2",
-  "main": "dist/index.js",
+  "main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "source": "packages/index.ts",
