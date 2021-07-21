@@ -22,3 +22,6 @@ export type { DividerProps } from "./core/Divider";
 export { useSelectState } from "./hooks/useSelectState";
 export type { UseSelectStateOptions, UseSelectStateReturn, Value } from "./hooks/useSelectState";
 
+export { AtlasSelect } from "./Select";
+export type { AtlasSelectProps } from "./Select";
+export type { TOption, TOptions } from "./Select.types";
