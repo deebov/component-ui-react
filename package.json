@@ -23,6 +23,7 @@
     "build": "yarn build:js && yarn build:ts",
     "build:js": "node scripts/build.js",
     "build:ts": "tsc",
+    "remove-emotion-ts": "rimraf node_modules/@emotion/core/types/index.d.ts"
   },
   "eslintConfig": {
     "extends": [
