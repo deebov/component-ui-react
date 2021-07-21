@@ -1,4 +1,4 @@
-import { AtlasSelect } from "..";
+import { AtlasSelect } from ".";
 import { fireEvent, getByRole, press, render, screen } from "../test-utils/test-utils";
 
 describe("Select", () => {
