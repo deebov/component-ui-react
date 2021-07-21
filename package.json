@@ -16,7 +16,8 @@
     "url": "https://github.com/deebov"
   },
   "scripts": {
-
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +58,10 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@release-it/conventional-changelog": "^2.0.1",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
