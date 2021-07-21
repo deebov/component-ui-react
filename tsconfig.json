@@ -19,8 +19,11 @@
         "downlevelIteration": true,
         "preserveSymlinks": false,
         "outFile": "dist/index.d.ts",
-        "emitDeclarationOnly": true
+        "emitDeclarationOnly": true,
+        "paths": {
+            "test-utils": ["./packages/test-utils/test-utils.tsx"]
+        }
     },
     "include": ["packages"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "packages/**/*.stories.tsx", "packages/test-utils"]
 }
