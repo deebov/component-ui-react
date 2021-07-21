@@ -31,6 +31,6 @@ esbuild
         ...common,
         splitting: true,
         format: "esm",
-        outExtension: { ".js": ".esm.js" },
+        // outExtension: { ".js": ".esm.js" },
     })
     .catch(() => process.exit(1));
