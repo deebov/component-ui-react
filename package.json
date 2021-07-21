@@ -18,6 +18,11 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "prebuild": "yarn clean && yarn remove-emotion-ts",
+    "dev": "DEV=true yarn build:js",
+    "build": "yarn build:js && yarn build:ts",
+    "build:js": "node scripts/build.js",
+    "build:ts": "tsc",
   },
   "eslintConfig": {
     "extends": [
