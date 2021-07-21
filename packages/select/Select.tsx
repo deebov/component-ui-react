@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Listbox, useSelectState } from ".";
-import { ChevronDown } from "../core/icons/ChevronDown";
+import { ChevronDown } from "../icons";
 import { UseSelectStateOptions } from "./hooks/useSelectState";
 import {
     listboxStyle,

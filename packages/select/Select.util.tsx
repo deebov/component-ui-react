@@ -1,5 +1,5 @@
 import React from "react";
-import { Check } from "../core/icons/Check";
+import { Check } from "../icons/Check";
 import { checkIconStyle, StyledDescription, StyledOption } from "./Select.styled";
 import { TOption, TOptions } from "./Select.types";
 
