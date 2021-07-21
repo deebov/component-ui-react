@@ -23,6 +23,8 @@
     "build": "yarn build:js && yarn build:ts",
     "build:js": "node scripts/build.js",
     "build:ts": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "remove-emotion-ts": "rimraf node_modules/@emotion/core/types/index.d.ts"
   },
   "eslintConfig": {
