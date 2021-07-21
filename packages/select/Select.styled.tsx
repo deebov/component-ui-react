@@ -11,7 +11,7 @@ export const StyledTrigger = styled(Trigger, {
     borderRadius: 4,
     px: "$10",
     py: "$5",
-    border: "1px solid $gray300",
+    border: "1px solid $gray500",
     fontFamily: "$main",
     fontSize: "$2",
     cursor: "pointer",
