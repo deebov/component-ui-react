@@ -3,7 +3,7 @@ const path = require("path");
 
 const isDev = !!process.env.DEV;
 
-const externals = [];
+const externals = ["@stitches/react", "react", "react-dom"];
 
 const common = {
     entryPoints: ["packages/index.ts", "packages/select/index.ts", "packages/core/index.ts", "packages/icons/index.ts"],
