@@ -1,5 +1,5 @@
 import { Key, useCallback, useState } from "react";
-import { useControlledtate } from "./useControlledState";
+import { useControlledtate } from "../../hooks";
 
 export type Value = string | number;
 
