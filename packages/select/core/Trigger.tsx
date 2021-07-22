@@ -66,7 +66,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TriggerProps>((props, ref) 
             aria-labelledby="atlas-select--label atlas-select--trigger-value"
             onClick={handleTriggerClick}
             onKeyDown={handleKeydown}>
-            <span id={"atlas-select--trigger-value"} className="atlas-select--trigger-value">
+            <span id={"atlas-select--trigger-value"} className="atlas-select--trigger-value" style={{pointerEvents:'none'}}>
                 {props.children}
             </span>
         </button>

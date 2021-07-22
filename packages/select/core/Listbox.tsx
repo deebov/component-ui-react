@@ -5,6 +5,7 @@ import { UseSelectStateReturn } from "../hooks/useSelectState";
 import { useMergedRef } from "../hooks/useMergedRef";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { useOnClickOutside } from "../hooks/useOnClickOutside";
 
 const focusableSelectors = 'li[role="option"][tabindex]:not([aria-disabled]):not([hidden])';
 
@@ -17,10 +18,19 @@ export const ListboxBase = <TItem extends object>(props: ListboxProps<TItem>, re
     const {
         state,
         closeWithFocus,
+        trigger: { ref: triggerRef },
         listbox: { ref: listboxRef },
     } = useSelectContext();
     const mergedRef = useMergedRef(ref, listboxRef);
     const focusableElementsRef = useRef<NodeListOf<Element>>();
+
+    useOnClickOutside(listboxRef, (e) => {
+        // Do not close if event.target is the trigger. Becaue the trigger will close it itself.
+        const isTrigger = (e.target as HTMLElement).isSameNode(triggerRef.current)
+        if(!isTrigger) {
+            closeWithFocus()
+        }
+    });
 
     useEffect(() => {
         if (!listboxRef.current) return;
