@@ -1,10 +1,9 @@
 import { ForwardedRef, forwardRef, HTMLAttributes, KeyboardEventHandler, RefObject, useEffect, useRef } from "react";
 import { useMergedRef, useOnClickOutside } from "../../hooks";
 import { UseSelectStateReturn } from "../hooks/useSelectState";
+import { focusableSelectors, focusFirst, focusLast, focusNext, focusPrevious, Keys } from "../Select.util";
 import { OptionProps } from "./Option";
 import { useSelectContext } from "./SelectContext";
-
-const focusableSelectors = 'li[role="option"][tabindex]:not([aria-disabled]):not([hidden])';
 
 export interface ListboxProps<TItem extends object> extends HTMLAttributes<HTMLUListElement> {
     items?: TItem[];
@@ -19,7 +18,7 @@ export const ListboxBase = <TItem extends object>(props: ListboxProps<TItem>, re
         listbox: { ref: listboxRef },
     } = useSelectContext();
     const mergedRef = useMergedRef(ref, listboxRef);
-    const focusableElementsRef = useRef<NodeListOf<Element>>();
+    const focusableElementsRef = useRef<NodeListOf<HTMLElement>>();
 
     useOnClickOutside(listboxRef, (e) => {
         // Do not close if event.target is the trigger. Becaue the trigger will close it itself.
@@ -33,47 +32,33 @@ export const ListboxBase = <TItem extends object>(props: ListboxProps<TItem>, re
         if (!listboxRef.current) return;
 
         const focusableElements = listboxRef.current.querySelectorAll(focusableSelectors);
-        focusableElementsRef.current = focusableElements;
+        focusableElementsRef.current = focusableElements as NodeListOf<HTMLElement>;
     }, []);
 
     const handleListboxKeydown: KeyboardEventHandler<HTMLUListElement> = (e) => {
-        const focusableElements = focusableElementsRef.current || [];
+        const focusableElements = focusableElementsRef.current || (new NodeList() as NodeListOf<HTMLElement>);
 
-        if (e.key === "ArrowDown") {
+        if (e.key === Keys.ArrowDown) {
             // Set focus to the first focusable Element if no option is in focus
             if (document.activeElement?.isSameNode(e.currentTarget)) {
-                const firstEl = focusableElements?.[0];
-                if (firstEl) {
-                    (firstEl as HTMLElement).focus();
-                }
+                focusFirst(focusableElements);
                 // Set focus to the next focusable Element
             } else if (e.currentTarget.contains(document.activeElement)) {
-                const currentIndex = Array.from(focusableElements).findIndex((el) =>
-                    el.isSameNode(document.activeElement)
-                );
-                if (currentIndex + 1 !== focusableElements.length) {
-                    const nextEl = focusableElements[currentIndex + 1];
-                    (nextEl as HTMLElement).focus();
-                }
+                focusNext(focusableElements);
             }
-        } else if (e.key === "ArrowUp") {
+        } else if (e.key === Keys.ArrowUp) {
             // Set focus to the least focusable Element if no option is in focus
             if (document.activeElement?.isSameNode(e.currentTarget)) {
-                const lastEl = focusableElements[focusableElements.length - 1];
-                if (lastEl) {
-                    (lastEl as HTMLElement).focus();
-                }
+                focusLast(focusableElements);
                 // Set focus to the previous focusable Element
             } else if (e.currentTarget.contains(document.activeElement)) {
-                const currentIndex = Array.from(focusableElements).findIndex((el) =>
-                    el.isSameNode(document.activeElement)
-                );
-                if (currentIndex > 0) {
-                    const prevEl = focusableElements[currentIndex - 1];
-                    (prevEl as HTMLElement).focus();
-                }
+                focusPrevious(focusableElements);
             }
-        } else if (e.key === "Escape") {
+        } else if (e.key === Keys.Home) {
+            focusFirst(focusableElements);
+        } else if (e.key === Keys.End) {
+            focusLast(focusableElements);
+        } else if (e.key === Keys.Escape) {
             closeWithFocus();
         }
 
