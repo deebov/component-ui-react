@@ -67,7 +67,7 @@ export const focusPrevious = (focusableElements: NodeListOf<HTMLElement>) => {
     }
 };
 
-export const focusableSelectors = 'li[role="option"][tabindex]:not([aria-disabled]):not([hidden])';
+export const focusableSelectors = '[role="option"][tabindex]:not([aria-disabled]):not([hidden])';
 
 export enum Keys {
     Enter = "Enter",

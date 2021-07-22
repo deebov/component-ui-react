@@ -1,7 +1,8 @@
-import { ForwardedRef, forwardRef, HTMLAttributes, KeyboardEventHandler, RefObject, useEffect, useRef } from "react";
+import { ForwardedRef, forwardRef, HTMLAttributes, KeyboardEventHandler, RefObject } from "react";
 import { useMergedRef, useOnClickOutside } from "../../hooks";
+import { useFocus } from "../hooks/useFocus";
 import { UseSelectStateReturn } from "../hooks/useSelectState";
-import { focusableSelectors, focusFirst, focusLast, focusNext, focusPrevious, Keys } from "../Select.util";
+import { Keys } from "../Select.util";
 import { OptionProps } from "./Option";
 import { useSelectContext } from "./SelectContext";
 
@@ -18,7 +19,7 @@ export const ListboxBase = <TItem extends object>(props: ListboxProps<TItem>, re
         listbox: { ref: listboxRef },
     } = useSelectContext();
     const mergedRef = useMergedRef(ref, listboxRef);
-    const focusableElementsRef = useRef<NodeListOf<HTMLElement>>();
+    const focusManager = useFocus({ ref: listboxRef });
 
     useOnClickOutside(listboxRef, (e) => {
         // Do not close if event.target is the trigger. Becaue the trigger will close it itself.
@@ -28,36 +29,27 @@ export const ListboxBase = <TItem extends object>(props: ListboxProps<TItem>, re
         }
     });
 
-    useEffect(() => {
-        if (!listboxRef.current) return;
-
-        const focusableElements = listboxRef.current.querySelectorAll(focusableSelectors);
-        focusableElementsRef.current = focusableElements as NodeListOf<HTMLElement>;
-    }, []);
-
     const handleListboxKeydown: KeyboardEventHandler<HTMLUListElement> = (e) => {
-        const focusableElements = focusableElementsRef.current || (new NodeList() as NodeListOf<HTMLElement>);
-
         if (e.key === Keys.ArrowDown) {
             // Set focus to the first focusable Element if no option is in focus
             if (document.activeElement?.isSameNode(e.currentTarget)) {
-                focusFirst(focusableElements);
+                focusManager.focusFirst();
                 // Set focus to the next focusable Element
             } else if (e.currentTarget.contains(document.activeElement)) {
-                focusNext(focusableElements);
+                focusManager.focusNext();
             }
         } else if (e.key === Keys.ArrowUp) {
             // Set focus to the least focusable Element if no option is in focus
             if (document.activeElement?.isSameNode(e.currentTarget)) {
-                focusLast(focusableElements);
+                focusManager.focusLast();
                 // Set focus to the previous focusable Element
             } else if (e.currentTarget.contains(document.activeElement)) {
-                focusPrevious(focusableElements);
+                focusManager.focusPrevious();
             }
         } else if (e.key === Keys.Home) {
-            focusFirst(focusableElements);
+            focusManager.focusFirst();
         } else if (e.key === Keys.End) {
-            focusLast(focusableElements);
+            focusManager.focusLast();
         } else if (e.key === Keys.Escape) {
             closeWithFocus();
         }

@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes, KeyboardEventHandler, MouseEventHandler } from "react";
 import { useSelectContext } from "./SelectContext";
-import { useMergedRef } from "../hooks/useMergedRef";
+import { useMergedRef } from "../../hooks/useMergedRef";
 
 export interface TriggerProps extends HTMLAttributes<HTMLButtonElement> {}
 
