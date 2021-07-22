@@ -16,7 +16,7 @@ export const parameters = {
     list: [
       { name: "light", class: "", color: theme.colors.mainBgColor.value },
       // @ts-ignore
-      { name: "dark", class: darkTheme.className, color: darkTheme.colors.mainBgColor.value },
+      { name: "dark", class: darkTheme.toString(), color: darkTheme.colors.mainBgColor.value },
     ],
   },
 };
