@@ -3,6 +3,7 @@ import { css, styled } from "../core";
 
 export const StyledRoot = styled(Root, {
     position: "relative",
+    display: 'inline-block'
 });
 
 export const StyledTrigger = styled(Trigger, {
@@ -94,6 +95,7 @@ export const StyledOption = styled(Option, {
     position: "relative",
     display: "flex",
     flexDirection: "column",
+    textAlign: 'left',
 
     "&:hover": {
         background: "$selectOptionHoverBg",
