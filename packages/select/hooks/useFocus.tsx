@@ -17,10 +17,7 @@ export interface UseFocusOptions {
  */
 export const useFocus = (options: UseFocusOptions) => {
     const { ref } = options;
-    const focusableElementsRef = useRef<NodeListOf<HTMLElement>>();
-    const emptyNodeList = useRef(new NodeList() as NodeListOf<HTMLElement>);
-
-    const safeFocusableElements = focusableElementsRef.current || emptyNodeList.current;
+    const focusableElementsRef = useRef<NodeListOf<HTMLElement>>([] as any);
 
     useEffect(() => {
         if (!ref.current) return;
@@ -29,10 +26,10 @@ export const useFocus = (options: UseFocusOptions) => {
         focusableElementsRef.current = focusableElements as NodeListOf<HTMLElement>;
     }, []);
 
-    const _focusFirst = useCallback(() => focusFirst(safeFocusableElements), [safeFocusableElements]);
-    const _focusLast = useCallback(() => focusLast(safeFocusableElements), [safeFocusableElements]);
-    const _focusNext = useCallback(() => focusNext(safeFocusableElements), [safeFocusableElements]);
-    const _focusPrevious = useCallback(() => focusPrevious(safeFocusableElements), [safeFocusableElements]);
+    const _focusFirst = useCallback(() => focusFirst(focusableElementsRef.current), []);
+    const _focusLast = useCallback(() => focusLast(focusableElementsRef.current), []);
+    const _focusNext = useCallback(() => focusNext(focusableElementsRef.current), []);
+    const _focusPrevious = useCallback(() => focusPrevious(focusableElementsRef.current), []);
 
     return {
         focusFirst: _focusFirst,

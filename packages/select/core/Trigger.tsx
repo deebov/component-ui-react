@@ -1,6 +1,7 @@
 import { forwardRef, HTMLAttributes, KeyboardEventHandler, MouseEventHandler } from "react";
 import { useSelectContext } from "./SelectContext";
 import { useMergedRef } from "../../hooks/useMergedRef";
+import { Keys } from "../Select.util";
 
 export interface TriggerProps extends HTMLAttributes<HTMLButtonElement> {}
 
@@ -49,7 +50,7 @@ export const Trigger = forwardRef<HTMLButtonElement, TriggerProps>((props, ref) 
         if (isDisabled) return;
         if(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return
 
-        if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === 'Enter' || e.key === ' ') {
+        if (e.key === Keys.ArrowUp || e.key === Keys.ArrowDown || e.key === Keys.Enter || e.key === Keys.Space) {
             onOpen(true);
         }
     };

@@ -1,5 +1,5 @@
-import { Check } from "../icons";
-import { checkIconStyle, StyledDescription, StyledOption } from "./Select.styled";
+// import { Check } from "../icons";
+// import { checkIconStyle, StyledDescription, StyledOption } from "./Select.styled";
 import { TOption, TOptions } from "./Select.types";
 
 /**
@@ -7,18 +7,8 @@ import { TOption, TOptions } from "./Select.types";
  * @param options Options array
  * @returns {boolean}
  */
-export const isSection = (options: TOption | TOptions): options is TOptions => {
+ export const isSection = (options: TOption | TOptions): options is TOptions => {
     return (options as TOptions).options !== undefined;
-};
-
-export const renderCustomOption = (option: TOption) => {
-    return (
-        <StyledOption key={option.value} value={option.value} textValue={option.label} isDisabled={option.isDisabled}>
-            <Check aria-hidden="true" className={checkIconStyle.toString()} />
-            {option.label}
-            {option.description && <StyledDescription>{option.description}</StyledDescription>}
-        </StyledOption>
-    );
 };
 
 /**
@@ -26,7 +16,7 @@ export const renderCustomOption = (option: TOption) => {
  * @param {NodeListOf<HTMLElement} focusableElements - NodeList of HTML elements
  */
 export const focusFirst = (focusableElements: NodeListOf<HTMLElement>) => {
-    const firstEl = focusableElements?.[0];
+    const firstEl = focusableElements[0];
     if (firstEl) {
         firstEl.focus();
     }

@@ -1,17 +1,20 @@
 import React, { useMemo } from "react";
 import { Listbox, useSelectState } from ".";
-import { ChevronDown } from "../icons";
+import { Check, ChevronDown } from "../icons";
 import { UseSelectStateOptions } from "./hooks/useSelectState";
 import {
+    checkIconStyle,
     listboxStyle,
+    StyledDescription,
     StyledDivider,
+    StyledOption,
     StyledPlaceholder,
     StyledRoot,
     StyledSection,
-    StyledTrigger,
+    StyledTrigger
 } from "./Select.styled";
 import type { TOption, TOptions } from "./Select.types";
-import { isSection, renderCustomOption } from "./Select.util";
+import { isSection } from "./Select.util";
 
 export interface AtlasSelectProps extends UseSelectStateOptions {
     /**
@@ -64,5 +67,15 @@ export const AtlasSelect = (props: AtlasSelectProps) => {
                 </Listbox>
             )}
         </StyledRoot>
+    );
+};
+
+const renderCustomOption = (option: TOption) => {
+    return (
+        <StyledOption key={option.value} value={option.value} textValue={option.label} isDisabled={option.isDisabled}>
+            <Check aria-hidden="true" className={checkIconStyle.toString()} />
+            {option.label}
+            {option.description && <StyledDescription>{option.description}</StyledDescription>}
+        </StyledOption>
     );
 };
