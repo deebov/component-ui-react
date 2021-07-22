@@ -44,7 +44,7 @@ export const AtlasSelect = (props: AtlasSelectProps) => {
                 {selectedItem?.label || (
                     <StyledPlaceholder>{props.placeholder || "Select an option..."}</StyledPlaceholder>
                 )}
-                <ChevronDown css={{ ml: "$10" }} />
+                <ChevronDown css={{ ml: "$15" }} />
             </StyledTrigger>
 
             {state.isOpen && (

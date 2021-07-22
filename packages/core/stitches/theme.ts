@@ -8,13 +8,28 @@ export const mainTheme = {
         gray200: "#eceef4",
         gray300: "#cdd0e0",
         gray400: "#6e7492",
-        gray500: "#191d2f",
+        gray500: "#21253A",
+        gray600: "#191d2f",
 
         lightText: "$gray100",
         darkText: "$gray500",
         secondaryDarkText: "$gray400",
+
+        selectDividerBg: '$gray300',
+        selectListboxBg: "#fff",
+        selectListboxBorderColor: '$gray300',
+        selectTriggerBg: "#fff",
+        selectTriggerColor: "$darkText",
+        selectTriggerBorderColor: '$gray300',
+        selectPlaceholderColor: "$gray400",
+        selectOptionColor: "$darkText",
+        selectOptionHoverBg: "$gray200",
+        selectOptionSelectedBg: "$primary300",
+        selectOptionSelectedColor: "$lightText",
+        selectDescriptionColor: '$gray400'
     },
     space: {
+        3: '2px',
         5: "4px",
         10: "8px",
         15: "12px",
@@ -23,6 +38,8 @@ export const mainTheme = {
         30: "24px",
         40: "32px",
         50: "40px",
+        60: "48px",
+        70: "70px",
     },
     sizes: {},
     fontWeights: {
@@ -41,5 +58,8 @@ export const mainTheme = {
     shadows: {
         md: "0 2px 8px 0 #6e749226",
     },
-    radii: {},
+    radii: {
+        1: "2px",
+        2: "4px",
+    },
 };

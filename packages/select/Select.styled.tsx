@@ -6,16 +6,19 @@ export const StyledRoot = styled(Root, {
 });
 
 export const StyledTrigger = styled(Trigger, {
-    color: "$darkText",
-    background: "none",
-    borderRadius: 4,
-    px: "$10",
+    color: "$selectTriggerColor",
+    background: "$selectTriggerBg",
+    borderRadius: '$2',
+    pl: "$15",
+    pr: "$10",
     py: "$5",
-    border: "1px solid $gray300",
+    border: "1px solid $selectTriggerBorderColor",
     fontFamily: "$main",
     fontSize: "$2",
     cursor: "pointer",
     transition: "all 100ms ease-in-out",
+    minW: 100,
+    lineHeight: 1.4,
 
     "&:focus": {
         outline: "none",
@@ -27,36 +30,41 @@ export const StyledTrigger = styled(Trigger, {
     },
     // Trigger wraps its children into a span.atlas-select--trigger-value. So here we center that inner span.
     "& > .atlas-select--trigger-value": {
-        centered: true,
+       display:'flex',
+       justifyContent:'space-between',
+       alignItems:'center'
     },
 });
 
 export const listboxStyle = css({
+    background: '$selectListboxBg',
     listStyle: "none",
     boxShadow: "$md",
+    overflowY: "auto",
+
+    m: 0,
     px: 0,
     py: "$5",
-    m: 0,
     borderRadius: 4,
-    border: "1px solid $colors$gray300",
+    border: "1px solid $selectListboxBorderColor",
+
+    width: "max-content",
     minW: 180,
     maxW: 280,
-    width: "max-content",
     maxH: 300,
-    overflowY: "auto",
+
     position: "absolute",
     top: "calc(100% + $space$5)",
     left: 0,
-
+    
     '&:focus': {
         outline: 'none',
-        borderColor: '$primary400'
     }
 });
 
 export const StyledDivider = styled(Divider, {
     my: "$5",
-    background: "$gray200",
+    background: "$selectDividerBg",
 });
 
 export const StyledSection = styled(Section, {
@@ -70,23 +78,25 @@ export const checkIconStyle = css({ position: "absolute", left: "$10", top: "$5"
 
 export const StyledDescription = styled("span", {
     fontSize: "$1",
-    mt: "$5",
-    color: "$secondaryDarkText",
+    mt: "$3",
+    color: "$selectDescriptionColor",
+    lineHeight: 1.4
 });
 
 export const StyledOption = styled(Option, {
     m: 0,
     fontSize: "$2",
     cursor: "pointer",
-    color: "$darkText",
+    color: "$selectOptionColor",
     py: "$5",
     pl: "$40",
+    pr: "$20",
     position: "relative",
     display: "flex",
     flexDirection: "column",
 
     "&:hover": {
-        background: "$gray200",
+        background: "$selectOptionHoverBg",
     },
     "&:focus": {
         outline: "none",
@@ -94,14 +104,14 @@ export const StyledOption = styled(Option, {
     },
     // Styles for the selected state
     '&[aria-selected="true"]': {
-        background: "$primary300",
-        color: "$lightText",
+        background: "$selectOptionSelectedBg",
+        color: "$selectOptionSelectedColor",
 
         [`& ${checkIconStyle.selector}`]: {
             opacity: 1,
         },
         [`& ${StyledDescription.selector}`]: {
-            color: "$lightText",
+            color: "$selectOptionSelectedColor",
         },
     },
     // Styles for the disabled state
@@ -112,5 +122,5 @@ export const StyledOption = styled(Option, {
 });
 
 export const StyledPlaceholder = styled("span", {
-    color: "$gray400",
+    color: "$selectPlaceholderColor",
 });
