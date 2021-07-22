@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import { HTMLAttributes, Key, KeyboardEventHandler } from "react";
+import { Keys } from "../Select.util";
 import { useSelectContext } from "./SelectContext";
 
 export interface OptionProps extends HTMLAttributes<HTMLElement> {
@@ -27,7 +28,7 @@ export const Option = (props: OptionProps) => {
         if (isDisabled) {
             return;
         }
-        if (e.key === "Enter" || e.key === " ") {
+        if (e.key === Keys.Enter || e.key === Keys.Space) {
             state.setValue(value);
             closeWithFocus();
         }
