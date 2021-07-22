@@ -8,6 +8,16 @@
 - [React.js](https://reactjs.org/)
 - [Stitches](https://stitches.dev/) - Main styling library
 
+## Theming
+
+There're two themes that you can use. Light and Dark. By default, the Light theme is active. The Dark theme is exported from the core package.
+[Learn more](https://stitches.dev/docs/theming) about how you can programmatically use themes in Stitches.
+
+To see a theme in action go to Storybook and change the theme as shown below: 
+
+![theme changer](assets/theme-changer.png)
+
+
 ## Install
 
 Then install:
