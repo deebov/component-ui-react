@@ -9,7 +9,7 @@ export const mainTheme = {
         gray300: "#cdd0e0",
         gray400: "#6e7492",
         gray500: "#21253A",
-        gray600: "#191d2f",
+        gray600: "#121523",
 
         lightText: "$gray100",
         darkText: "$gray500",
