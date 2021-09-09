@@ -1,4 +1,4 @@
-# AtlasSelect
+# Select
 
 A React Select component
 
