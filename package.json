@@ -1,5 +1,5 @@
 {
-  "name": "@atlas-ui/react",
+  "name": "@component-ui/react",
   "version": "0.0.8",
   "main": "dist/index.js",
   "module": "dist/index.js",
