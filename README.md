@@ -2,8 +2,6 @@
 
 ## A UI components library made in React
 
-> **Note on my approach**: As the goal was to create a **reusble** select component, I chose do it the scalable way. That means this repository not only can be used to build a Select but other essential components too. It has a workflow for previewing, publishing, testing and development. So because of this this project might seem an overkill for this assignment. But I tried to show off some of my skills and experience from building consistent, accessible, reusable and robust UI component libraries and interfaces.
-
 ## Tech Stack
 - [React.js](https://reactjs.org/)
 - [Stitches](https://stitches.dev/) - Main styling library
